@@ -7,8 +7,6 @@ public class Unit : MonoBehaviour
     public virtual void ReceiveDamage()
     {
         Die();    // чувак умирает
-        //sdkhksdgka
-        //ewkofojeiojriofrioreiofhriorfhireofhio
     }
 
     protected virtual void Die()

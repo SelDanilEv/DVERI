@@ -16,7 +16,7 @@ public class Character : Unit
 
         get { return lives; }
         set {
-             if (value < 5)
+             if (value < 6)
              lives = value;
              livesBar.Refresh();
             }
@@ -61,6 +61,8 @@ public class Character : Unit
         if (Input.GetButtonDown("Fire1")) Shoot();
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
+        if (Lives <= 0)
+            Destroy(gameObject);
 
     }
         
@@ -91,7 +93,7 @@ public class Character : Unit
 
     public override void ReceiveDamage()
     {
-        lives--;
+        Lives--;
         rigidbody.velocity = Vector3.zero;
         rigidbody.AddForce(transform.up * 8.0F, ForceMode2D.Impulse);
 
