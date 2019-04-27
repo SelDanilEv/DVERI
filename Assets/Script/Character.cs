@@ -62,7 +62,8 @@ public class Character : Unit
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
-            Destroy(gameObject);
+            Debug.Log("DIe");
+           // Destroy(gameObject);
 
     }
         
