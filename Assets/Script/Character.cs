@@ -5,25 +5,47 @@ using UnityEngine;
 public class Character : Unit
 {
     [SerializeField]
-    private int lives = 10;
+    private int lives = 2;
     [SerializeField]
     private float speed = 3.0F;
     [SerializeField]
     private float jumpForce = 15.0F;
 
+    
+
     public int Lives
     {
 
         get { return lives; }
-        set {
-             if (value < 11)
-             lives = value;
-             livesBar.Refresh();
+        set
+        {
+            int temp = lives;
+            if (value < 5)
+                lives = value;
+            
+                Debug.Log(lives);
+            if ((lives % 2 == 1) || temp < lives) // если нечетное
+            {
+                if (lives % 2 == 0 && temp < lives) //если подобрали жизнь и четная
+                {
+                    livesBar.Refresh(lives + 1);
+                }
+                else if (lives % 2 == 1 && temp < lives) //если подобрали жизнь и нечетная
+                {
+                    livesBar1.Refresh1(lives+1);
+                }
+                livesBar.Refresh(lives);
             }
+            else // если четное
+                livesBar1.Refresh1(lives);
+            
+        }
 
     }
 
     private LivesBare livesBar;
+
+    private LivesBare1 livesBar1;
 
     private bool isGrounded = false;
 
@@ -44,6 +66,7 @@ public class Character : Unit
     private void Awake()
     {
         livesBar = FindObjectOfType<LivesBare>();
+        livesBar1 = FindObjectOfType<LivesBare1>();
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
