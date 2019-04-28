@@ -10,14 +10,11 @@ public class MovableMonster : Monster
 
     private Vector3 direction;
 
-   
-
     private SpriteRenderer sprite;
 
     protected override void Awake()
     {   
         sprite = GetComponentInChildren<SpriteRenderer>();
-    
     }
 
     protected override void Update()
@@ -37,9 +34,8 @@ public class MovableMonster : Monster
         {
             if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.6F)
                 ReceiveDamage();
-            else unit.ReceiveDamage();
+            else unit.ReceiveDamage();  
         }
-        
     }
 
     private void Move()

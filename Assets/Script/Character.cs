@@ -11,13 +11,11 @@ public class Character : Unit
     private float speed = 3.0F;
     [SerializeField]
     private float jumpForce = 15.0F;
-    [SerializeField]
+
     public int nearCount = 5;
-    [SerializeField]
     public int farCount = 5;
 
     public Text farCountText;
-
     public Text nearCountText;
 
 
@@ -51,8 +49,6 @@ public class Character : Unit
     }
 
     private LivesBare livesBar;
-
-
     private LivesBare1 livesBar1;
 
     private bool isGrounded = false;
@@ -69,7 +65,6 @@ public class Character : Unit
     new private Rigidbody2D rigidbody;
     private Animator animator; //Анимация 
     private SpriteRenderer sprite; // Поворот 
-
 
     private void Awake()
     {
@@ -97,7 +92,6 @@ public class Character : Unit
             Lives--;
             nearCount += 5;
             nearCountText.text = "NearBullet: " + nearCount;
-
         }
     }
     public void buyFar()
@@ -120,15 +114,12 @@ public class Character : Unit
         Debug.Log(nearCount);
         Debug.Log(farCount);
         if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; farCountText.text = "FarBullet: " + farCount; Shoot(); }
-
         if (Input.GetButtonDown("Fire2") && nearCount > 0) { nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
-   if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
 
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
             Debug.Log("DIe");
-
     }
 
 
@@ -185,17 +176,10 @@ public class Character : Unit
     {
         Bullet bullet = collider.gameObject.GetComponent<Bullet>();
         Bullet1 bullet1 = collider.gameObject.GetComponent<Bullet1>();
-        Character character = collider.GetComponent<Character>();
-
-
-        Character character = collider.GetComponent<Character>();
-
-
 
         if (bullet && bullet.Parent != gameObject || bullet1 && bullet1.Parent != gameObject)
             ReceiveDamage();
     }
-
 }
 
 public enum CharState

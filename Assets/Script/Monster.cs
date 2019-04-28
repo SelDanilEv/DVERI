@@ -13,19 +13,16 @@ public class Monster : Unit
         Bullet1 bullet1 = collider.GetComponent<Bullet1>();
         Bullet bullet = collider.GetComponent<Bullet>();
 
-        if (bullet || bullet1) 
+        if (bullet || bullet1)
         {
             ReceiveDamage();
         }
-        
+
         Character Character = collider.GetComponent<Character>();
         if (Character)
         {
             Character.ReceiveDamage();
         }
-
     }
-
-
 }
 

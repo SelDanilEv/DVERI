@@ -10,7 +10,6 @@ public class ShootableMonster : Monster
 
     [SerializeField]
     private Color bulletColor = Color.white;
-    //private Color NearFColor = Color.white;
 
     private Bullet bullet;
 
@@ -18,13 +17,11 @@ public class ShootableMonster : Monster
     protected override void Awake()
     {
         bullet = Resources.Load<Bullet>("Bullet");
-        //nearF = Resources.Load<NearFight>("NearFight");
     }
 
     protected override void Start()
     {
         InvokeRepeating("Shoot", rate, rate);
-        //InvokeRepeating("Bit",rate , rate);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
@@ -54,17 +51,4 @@ public class ShootableMonster : Monster
         newBullet.Direction = -newBullet.transform.right;
         newBullet.Color = bulletColor;
     }
-
-
-    //private void Bit()
-    //{
-    //    Vector3 position = transform.position; position.y += 0.5F;
-
-    //    NearFight newNearF = Instantiate(nearF, position, nearF.transform.rotation) as NearFight;
-
-    //    newNearF.Parent = gameObject;
-    //    newNearF.Direction = -newNearF.transform.right;
-    //    newNearF.Color = NearFColor;
-    //}
-
 }
