@@ -93,7 +93,7 @@ public class Character : Unit
     {
         if (Lives > 1)
         {
-            Lives --;
+            Lives--;
             nearCount += 5;
         }
     }
@@ -115,7 +115,7 @@ public class Character : Unit
         Debug.Log(nearCount);
         Debug.Log(farCount);
         if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; farCountText.text = "FarBullet: " + farCount; Shoot(); }
-        if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
+        if (Input.GetButtonDown("Fire2") && nearCount > 0) { nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
 
         if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; Shoot(); }
         if (Input.GetButtonDown("Fire2") && nearCount > 0) { nearCount--; Bit(); }
@@ -125,7 +125,7 @@ public class Character : Unit
         if (Lives <= 0)
             Debug.Log("DIe");
     }
-    
+
 
     private void Run()
     {
