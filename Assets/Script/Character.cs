@@ -50,6 +50,7 @@ public class Character : Unit
     private bool isGrounded = false;
 
     private Bullet bullet;
+    private Bullet1 bullet1;
 
     private CharState State
     {
@@ -70,6 +71,7 @@ public class Character : Unit
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         bullet = Resources.Load<Bullet>("Bullet");
+        bullet1 = Resources.Load<Bullet1>("Bullet1");
     }
 
     private void FixedUpdate()
@@ -82,6 +84,7 @@ public class Character : Unit
         if(isGrounded) State = CharState.Idle;
 
         if (Input.GetButtonDown("Fire1")) Shoot();
+        if (Input.GetButtonDown("Fire2")) Bit();
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
@@ -110,9 +113,17 @@ public class Character : Unit
     {
         
         Vector3 position = transform.position; position.y += 1.0F;
-         Bullet newBullet =  Instantiate(bullet, position, transform.rotation) as Bullet;
+        Bullet newBullet =  Instantiate(bullet, position, transform.rotation) as Bullet;
         newBullet.Parent = gameObject;
         newBullet.Direction = newBullet.transform.right * (sprite.flipX ? -1.0F : 1.0F);
+    }
+
+    private void Bit()
+    {
+        Vector3 position = transform.position; position.y += 0.8F;position.x += 0.8F* (sprite.flipX ? -1.0F : 1.0F);
+        Bullet1 newBullet1 = Instantiate(bullet1, position, transform.rotation) as Bullet1;
+        newBullet1.Parent = gameObject;
+        newBullet1.Direction = newBullet1.transform.right * (sprite.flipX ? -1.0F : 1.0F);
     }
 
     public override void ReceiveDamage()
@@ -120,7 +131,6 @@ public class Character : Unit
         Lives--;
         rigidbody.velocity = Vector3.zero;
         rigidbody.AddForce(transform.up * 8.0F, ForceMode2D.Impulse);
-
         Debug.Log(lives);
     }
 
@@ -135,11 +145,11 @@ public class Character : Unit
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-
         Bullet bullet = collider.gameObject.GetComponent<Bullet>();
-        if (bullet && bullet.Parent != gameObject)
-            ReceiveDamage();
+        Bullet1 bullet1 = collider.gameObject.GetComponent<Bullet1>();
 
+        if (bullet && bullet.Parent != gameObject || bullet1 && bullet1.Parent != gameObject)
+            ReceiveDamage();
     }
 
 }

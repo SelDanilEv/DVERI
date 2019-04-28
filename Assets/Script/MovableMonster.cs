@@ -29,6 +29,7 @@ public class MovableMonster : Monster
     {
         direction = transform.right;
     }
+
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         Unit unit = collider.GetComponent<Unit>();
