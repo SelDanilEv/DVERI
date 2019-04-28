@@ -21,9 +21,6 @@ public class Character : Unit
     public Text nearCountText;
 
 
-    public int nearCount = 5;
-    public int farCount = 5;
-
 
     public int Lives
     {
@@ -49,7 +46,6 @@ public class Character : Unit
             }
             else // если четное
                 livesBar1.Refresh1(lives);
-
         }
 
     }
@@ -98,7 +94,7 @@ public class Character : Unit
     {
         if (Lives > 1)
         {
-            Lives --;
+            Lives--;
             nearCount += 5;
             nearCountText.text = "NearBullet: " + nearCount;
 
@@ -116,7 +112,6 @@ public class Character : Unit
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Alpha2)) buyNear();
         if (Input.GetKeyDown(KeyCode.Alpha1)) buyFar();
 
@@ -125,7 +120,10 @@ public class Character : Unit
         Debug.Log(nearCount);
         Debug.Log(farCount);
         if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; farCountText.text = "FarBullet: " + farCount; Shoot(); }
-        if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
+
+        if (Input.GetButtonDown("Fire2") && nearCount > 0) { nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
+   if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
+
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
@@ -152,7 +150,6 @@ public class Character : Unit
 
     private void Shoot()
     {
-
         Vector3 position = transform.position; position.y += 1.0F;
         Bullet newBullet = Instantiate(bullet, position, transform.rotation) as Bullet;
         newBullet.Parent = gameObject;
@@ -188,6 +185,8 @@ public class Character : Unit
     {
         Bullet bullet = collider.gameObject.GetComponent<Bullet>();
         Bullet1 bullet1 = collider.gameObject.GetComponent<Bullet1>();
+        Character character = collider.GetComponent<Character>();
+
 
         Character character = collider.GetComponent<Character>();
 

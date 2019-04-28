@@ -9,7 +9,9 @@ public class Bullet_add : MonoBehaviour
         Character character = collider.GetComponent<Character>();
         if (character)
         {
+            
             character.farCount += 5;
+            character.farCountText.text = "FarBullet: " + character.farCount;
             Destroy(gameObject);
         }
     }
