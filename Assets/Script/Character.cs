@@ -21,6 +21,7 @@ public class Character : Unit
     public Text nearCountText;
 
 
+
     public int Lives
     {
         get { return lives; }
@@ -37,7 +38,7 @@ public class Character : Unit
                 {
                     livesBar.Refresh(lives + 1);
                 }
-                else if (lives % 2 == 1 && temp < lives) //если подобрали жизнь и нечетная
+                else if (lives % 2 == 1 && temp < lives) //если подобрали  жизнь и нечетная
                 {
                     livesBar1.Refresh1(lives + 1);
                 }
@@ -113,17 +114,21 @@ public class Character : Unit
     {
         if (Input.GetKeyDown(KeyCode.Alpha2)) buyNear();
         if (Input.GetKeyDown(KeyCode.Alpha1)) buyFar();
+
         if (isGrounded) State = CharState.Idle;
 
         Debug.Log(nearCount);
         Debug.Log(farCount);
         if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; farCountText.text = "FarBullet: " + farCount; Shoot(); }
+
         if (Input.GetButtonDown("Fire2") && nearCount > 0) { nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
+   if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
 
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
             Debug.Log("DIe");
+
     }
 
 
@@ -181,6 +186,10 @@ public class Character : Unit
         Bullet bullet = collider.gameObject.GetComponent<Bullet>();
         Bullet1 bullet1 = collider.gameObject.GetComponent<Bullet1>();
         Character character = collider.GetComponent<Character>();
+
+
+        Character character = collider.GetComponent<Character>();
+
 
 
         if (bullet && bullet.Parent != gameObject || bullet1 && bullet1.Parent != gameObject)

@@ -1179,8 +1179,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+
   m_Name:
   m_EditorClassIdentifier:
+
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -2573,8 +2575,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+
   m_Name:
   m_EditorClassIdentifier:
+
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -2653,8 +2657,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+
   m_Name:
   m_EditorClassIdentifier:
+
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -4970,8 +4976,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+
   m_Name:
   m_EditorClassIdentifier:
+
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -5282,12 +5290,15 @@ PrefabInstance:
     - target: {fileID: 6604629535698183728, guid: f9a6dbb307506ab489db880a52eb42e8,
         type: 3}
       propertyPath: farCountText
+
       value:
+
       objectReference: {fileID: 1010073910}
     - target: {fileID: 6604629535698183728, guid: f9a6dbb307506ab489db880a52eb42e8,
         type: 3}
       propertyPath: nearCountText
       value:
+
       objectReference: {fileID: 2109579954}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9a6dbb307506ab489db880a52eb42e8, type: 3}
