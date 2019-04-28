@@ -17,7 +17,6 @@ public class LivesBare : MonoBehaviour
             hearts[i] = transform.GetChild(i); //Большие сердечки
             Debug.Log(hearts[i]);
         }
-       
     }
 
     public void Refresh(int lives)

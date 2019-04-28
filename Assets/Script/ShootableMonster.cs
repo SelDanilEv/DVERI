@@ -13,7 +13,7 @@ public class ShootableMonster : Monster
     //private Color NearFColor = Color.white;
 
     private Bullet bullet;
-    //private NearFight nearF;
+
 
     protected override void Awake()
     {
@@ -23,13 +23,19 @@ public class ShootableMonster : Monster
 
     protected override void Start()
     {
-        InvokeRepeating("Shoot",rate , rate);
+        InvokeRepeating("Shoot", rate, rate);
         //InvokeRepeating("Bit",rate , rate);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
+        Bullet1 bullet1 = collider.GetComponent<Bullet1>();
+
         Unit unit = collider.GetComponent<Unit>();
+        if (bullet1)
+        {
+            ReceiveDamage();
+        }
         if (unit is Character)
         {
             if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.55F)
@@ -48,7 +54,7 @@ public class ShootableMonster : Monster
         newBullet.Direction = -newBullet.transform.right;
         newBullet.Color = bulletColor;
     }
-    
+
 
     //private void Bit()
     //{
@@ -60,5 +66,5 @@ public class ShootableMonster : Monster
     //    newNearF.Direction = -newNearF.transform.right;
     //    newNearF.Color = NearFColor;
     //}
-    
+
 }
