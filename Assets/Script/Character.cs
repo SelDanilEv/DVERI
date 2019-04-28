@@ -20,7 +20,6 @@ public class Character : Unit
 
     public Text nearCountText;
 
-
     public int Lives
     {
         get { return lives; }
@@ -95,6 +94,8 @@ public class Character : Unit
         {
             Lives --;
             nearCount += 5;
+            nearCountText.text = "NearBullet: " + nearCount;
+
         }
     }
     public void buyFar()
@@ -103,23 +104,20 @@ public class Character : Unit
         {
             Lives--;
             farCount += 5;
+            farCountText.text = "FarBullet: " + farCount;
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) buyNear();
-        if (Input.GetKeyDown(KeyCode.Alpha2)) buyFar();
+        if (Input.GetKeyDown(KeyCode.Alpha2)) buyNear();
+        if (Input.GetKeyDown(KeyCode.Alpha1)) buyFar();
         if (isGrounded) State = CharState.Idle;
 
         Debug.Log(nearCount);
         Debug.Log(farCount);
         if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; farCountText.text = "FarBullet: " + farCount; Shoot(); }
         if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
-
-        if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; Shoot(); }
-        if (Input.GetButtonDown("Fire2") && nearCount > 0) { nearCount--; Bit(); }
-
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
