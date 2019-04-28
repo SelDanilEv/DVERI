@@ -24,6 +24,7 @@ public class Character : Unit
     public int nearCount = 5;
     public int farCount = 5;
 
+
     public int Lives
     {
         get { return lives; }
@@ -40,7 +41,7 @@ public class Character : Unit
                 {
                     livesBar.Refresh(lives + 1);
                 }
-                else if (lives % 2 == 1 && temp < lives) //если подобрали жизнь и нечетная
+                else if (lives % 2 == 1 && temp < lives) //если подобрали  жизнь и нечетная
                 {
                     livesBar1.Refresh1(lives + 1);
                 }
