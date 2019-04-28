@@ -4163,6 +4163,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 8995f59d8bb6af242b6592164cbc3e17,
         type: 3}
+    - target: {fileID: 3813120343025729726, guid: 28c0893487e072445a079745de947b50,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c0893487e072445a079745de947b50, type: 3}
 --- !u!1001 &1090590558
@@ -5083,6 +5088,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3813120343025729726, guid: 28c0893487e072445a079745de947b50,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8995f59d8bb6af242b6592164cbc3e17,
+        type: 3}
     - target: {fileID: 1773062584711340379, guid: 28c0893487e072445a079745de947b50,
         type: 3}
       propertyPath: m_Offset.x
@@ -5093,12 +5104,6 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3813120343025729726, guid: 28c0893487e072445a079745de947b50,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 8995f59d8bb6af242b6592164cbc3e17,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c0893487e072445a079745de947b50, type: 3}
 --- !u!1001 &1316769109
@@ -5946,6 +5951,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3813120343025729726, guid: 28c0893487e072445a079745de947b50,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 90a3032f31178884498d60de4310aab0,
+        type: 3}
     - target: {fileID: 1773062584711340379, guid: 28c0893487e072445a079745de947b50,
         type: 3}
       propertyPath: m_Offset.x
@@ -5956,12 +5967,6 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3813120343025729726, guid: 28c0893487e072445a079745de947b50,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 90a3032f31178884498d60de4310aab0,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c0893487e072445a079745de947b50, type: 3}
 --- !u!4 &1660014933 stripped
@@ -6040,7 +6045,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -8232,6 +8237,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 8995f59d8bb6af242b6592164cbc3e17,
         type: 3}
+    - target: {fileID: 3813120343025729726, guid: 28c0893487e072445a079745de947b50,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c0893487e072445a079745de947b50, type: 3}
 --- !u!4 &2111107396 stripped
