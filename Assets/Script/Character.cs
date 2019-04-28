@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : Unit
 {
@@ -10,6 +11,15 @@ public class Character : Unit
     private float speed = 3.0F;
     [SerializeField]
     private float jumpForce = 15.0F;
+    [SerializeField]
+    public int nearCount = 5;
+    [SerializeField]
+    public int farCount = 5;
+
+    public Text farCountText;
+
+    public Text nearCountText;
+
 
     public int nearCount = 5;
     public int farCount = 5;
@@ -18,7 +28,6 @@ public class Character : Unit
 
     public int Lives
     {
-
         get { return lives; }
         set
         {
@@ -48,6 +57,7 @@ public class Character : Unit
 
     private LivesBare livesBar;
 
+
     private LivesBare1 livesBar1;
 
     private bool isGrounded = false;
@@ -68,6 +78,8 @@ public class Character : Unit
 
     private void Awake()
     {
+        farCountText.text = "FarBullet: " + farCount;
+        nearCountText.text = "NearBullet: " + nearCount;
         livesBar = FindObjectOfType<LivesBare>();
         livesBar1 = FindObjectOfType<LivesBare1>();
         rigidbody = GetComponent<Rigidbody2D>();
@@ -82,19 +94,46 @@ public class Character : Unit
         CheckGround();
     }
 
+
+    public void buyNear()
+    {
+        if (Lives > 1)
+        {
+            Lives --;
+            nearCount += 5;
+        }
+    }
+    public void buyFar()
+    {
+        if (Lives > 1)
+        {
+            Lives--;
+            farCount += 5;
+        }
+    }
+
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) buyNear();
+        if (Input.GetKeyDown(KeyCode.Alpha2)) buyFar();
         if (isGrounded) State = CharState.Idle;
 
+        Debug.Log(nearCount);
+        Debug.Log(farCount);
+        if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; farCountText.text = "FarBullet: " + farCount; Shoot(); }
+        if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
+
         if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; Shoot(); }
-        if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; Bit(); }
+        if (Input.GetButtonDown("Fire2") && nearCount > 0) { nearCount--; Bit(); }
+
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
             Debug.Log("DIe");
-        // Destroy(gameObject);
 
     }
+
 
     private void Run()
     {
@@ -146,10 +185,14 @@ public class Character : Unit
         if (!isGrounded) State = CharState.Jump;
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         Bullet bullet = collider.gameObject.GetComponent<Bullet>();
         Bullet1 bullet1 = collider.gameObject.GetComponent<Bullet1>();
+
+        Character character = collider.GetComponent<Character>();
+
+
 
         if (bullet && bullet.Parent != gameObject || bullet1 && bullet1.Parent != gameObject)
             ReceiveDamage();
