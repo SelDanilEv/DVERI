@@ -35,7 +35,7 @@ public class MovableMonster : Monster
         Unit unit = collider.GetComponent<Unit>();
         if (unit && unit is Character)
         {
-            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.55F)
+            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.6F)
                 ReceiveDamage();
             else unit.ReceiveDamage();
         }
