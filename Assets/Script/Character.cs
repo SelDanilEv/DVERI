@@ -20,11 +20,7 @@ public class Character : Unit
 
     public Text nearCountText;
 
-
-    public int nearCount = 5;
-    public int farCount = 5;
-
-
+    
 
     public int Lives
     {
