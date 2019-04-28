@@ -30,21 +30,23 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, 1.4F);
     }
+    
 
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+
+
+private void OnTriggerEnter2D(Collider2D collider)
     {
+        Bullet1 bullet1 = collider.GetComponent<Bullet1>();
+        
         Unit unit = collider.GetComponent<Unit>();
-        if (unit && unit.gameObject != parent)
+        if (unit && unit.gameObject != parent || bullet1)
         {
             Destroy(gameObject); // comment 2
         }
-        //другое
-        //commet3
-
     }
 }
