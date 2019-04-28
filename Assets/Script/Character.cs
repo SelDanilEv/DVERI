@@ -108,14 +108,11 @@ public class Character : Unit
     {
         if (Input.GetKeyDown(KeyCode.Alpha2)) buyNear();
         if (Input.GetKeyDown(KeyCode.Alpha1)) buyFar();
-
         if (isGrounded) State = CharState.Idle;
-
         Debug.Log(nearCount);
         Debug.Log(farCount);
         if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; farCountText.text = "FarBullet: " + farCount; Shoot(); }
         if (Input.GetButtonDown("Fire2") && nearCount > 0) { nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
-
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
@@ -126,11 +123,8 @@ public class Character : Unit
     private void Run()
     {
         Vector3 direction = transform.right * Input.GetAxis("Horizontal"); //Направление движения 
-
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
-
         sprite.flipX = direction.x < 0.0F;
-
         if (isGrounded) State = CharState.Run;
     }
 
@@ -166,9 +160,7 @@ public class Character : Unit
     private void CheckGround()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3F);
-
         isGrounded = colliders.Length > 1;
-
         if (!isGrounded) State = CharState.Jump;
     }
 
