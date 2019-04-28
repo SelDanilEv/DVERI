@@ -4,9 +4,7 @@ using System.Collections;
 public class PlatformMovement : MonoBehaviour 
 {
 		private Vector3 posA;
-
 		private Vector3 posB;
-
 		private Vector3 nexPos;
 
 		[SerializeField]
@@ -17,15 +15,13 @@ public class PlatformMovement : MonoBehaviour
 
 	[SerializeField]
 		private Transform transformB;
-
-	// Use this for initialization
+    
 	void Start () {
 		posA = childTransform.localPosition;
 		posB = transformB.localPosition;
 		nexPos = posB;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 	
 		Move ();
