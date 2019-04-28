@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LivesBare : MonoBehaviour
 {
-    private Transform[] hearts  = new Transform[5];
+    private Transform[] hearts  = new Transform[10];
 
     private Character character;
 

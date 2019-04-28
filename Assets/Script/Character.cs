@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : Unit
 {
     [SerializeField]
-    private int lives = 5;
+    private int lives = 10;
     [SerializeField]
     private float speed = 3.0F;
     [SerializeField]
@@ -16,7 +16,7 @@ public class Character : Unit
 
         get { return lives; }
         set {
-             if (value < 6)
+             if (value < 11)
              lives = value;
              livesBar.Refresh();
             }
