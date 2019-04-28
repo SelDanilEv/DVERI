@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Heart : MonoBehaviour
 {
+
+    
     private void OnTriggerEnter2D(Collider2D collider)
     {
         Character character = collider.GetComponent<Character>();
-
         if (character)
         {
-            character.Lives++;
+            character.Lives += 2;
             Destroy(gameObject);
         }
     }
