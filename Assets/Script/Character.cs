@@ -11,9 +11,15 @@ public class Character : Unit
     private float speed = 3.0F;
     [SerializeField]
     private float jumpForce = 15.0F;
-
+    [SerializeField]
     public int nearCount = 5;
+    [SerializeField]
     public int farCount = 5;
+
+    public Text farCountText;
+
+    public Text nearCountText;
+
 
     public int Lives
     {
@@ -45,6 +51,7 @@ public class Character : Unit
 
     private LivesBare livesBar;
 
+
     private LivesBare1 livesBar1;
 
     private bool isGrounded = false;
@@ -65,6 +72,8 @@ public class Character : Unit
 
     private void Awake()
     {
+        farCountText.text = "FarBullet: " + farCount;
+        nearCountText.text = "NearBullet: " + nearCount;
         livesBar = FindObjectOfType<LivesBare>();
         livesBar1 = FindObjectOfType<LivesBare1>();
         rigidbody = GetComponent<Rigidbody2D>();
@@ -102,8 +111,15 @@ public class Character : Unit
         if (Input.GetKeyDown(KeyCode.Alpha1)) buyNear();
         if (Input.GetKeyDown(KeyCode.Alpha2)) buyFar();
         if (isGrounded) State = CharState.Idle;
+
+        Debug.Log(nearCount);
+        Debug.Log(farCount);
+        if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; farCountText.text = "FarBullet: " + farCount; Shoot(); }
+        if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; nearCountText.text = "NearBullet: " + nearCount; Bit(); }
+
         if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; Shoot(); }
         if (Input.GetButtonDown("Fire2") && nearCount > 0) { nearCount--; Bit(); }
+
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
@@ -129,7 +145,6 @@ public class Character : Unit
 
     private void Shoot()
     {
-
         Vector3 position = transform.position; position.y += 1.0F;
         Bullet newBullet = Instantiate(bullet, position, transform.rotation) as Bullet;
         newBullet.Parent = gameObject;
