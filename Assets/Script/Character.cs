@@ -21,6 +21,11 @@ public class Character : Unit
     public Text nearCountText;
 
 
+    public int nearCount = 5;
+    public int farCount = 5;
+
+
+
     public int Lives
     {
         get { return lives; }
@@ -45,6 +50,7 @@ public class Character : Unit
             }
             else // если четное
                 livesBar1.Refresh1(lives);
+
         }
 
     }
@@ -108,6 +114,7 @@ public class Character : Unit
 
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Alpha1)) buyNear();
         if (Input.GetKeyDown(KeyCode.Alpha2)) buyFar();
         if (isGrounded) State = CharState.Idle;
@@ -124,8 +131,9 @@ public class Character : Unit
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
             Debug.Log("DIe");
+
     }
-    
+
 
     private void Run()
     {
@@ -145,6 +153,7 @@ public class Character : Unit
 
     private void Shoot()
     {
+
         Vector3 position = transform.position; position.y += 1.0F;
         Bullet newBullet = Instantiate(bullet, position, transform.rotation) as Bullet;
         newBullet.Parent = gameObject;
@@ -180,7 +189,9 @@ public class Character : Unit
     {
         Bullet bullet = collider.gameObject.GetComponent<Bullet>();
         Bullet1 bullet1 = collider.gameObject.GetComponent<Bullet1>();
+
         Character character = collider.GetComponent<Character>();
+
 
 
         if (bullet && bullet.Parent != gameObject || bullet1 && bullet1.Parent != gameObject)
