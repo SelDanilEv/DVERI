@@ -11,7 +11,10 @@ public class Character : Unit
     [SerializeField]
     private float jumpForce = 15.0F;
 
-    
+    public int nearCount = 5;
+    public int farCount = 5;
+
+
 
     public int Lives
     {
@@ -22,8 +25,8 @@ public class Character : Unit
             int temp = lives;
             if (value < 5)
                 lives = value;
-            
-                Debug.Log(lives);
+
+            Debug.Log(lives);
             if ((lives % 2 == 1) || temp < lives) // если нечетное
             {
                 if (lives % 2 == 0 && temp < lives) //если подобрали жизнь и четная
@@ -32,13 +35,13 @@ public class Character : Unit
                 }
                 else if (lives % 2 == 1 && temp < lives) //если подобрали жизнь и нечетная
                 {
-                    livesBar1.Refresh1(lives+1);
+                    livesBar1.Refresh1(lives + 1);
                 }
                 livesBar.Refresh(lives);
             }
             else // если четное
                 livesBar1.Refresh1(lives);
-            
+
         }
 
     }
@@ -81,18 +84,18 @@ public class Character : Unit
 
     private void Update()
     {
-        if(isGrounded) State = CharState.Idle;
+        if (isGrounded) State = CharState.Idle;
 
-        if (Input.GetButtonDown("Fire1")) Shoot();
-        if (Input.GetButtonDown("Fire2")) Bit();
+        if (Input.GetButtonDown("Fire1") && farCount > 0) { farCount--; Shoot(); }
+        if (Input.GetButtonDown("Fire2") && nearCount > 0){ nearCount--; Bit(); }
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Lives <= 0)
             Debug.Log("DIe");
-           // Destroy(gameObject);
+        // Destroy(gameObject);
 
     }
-        
+
     private void Run()
     {
         Vector3 direction = transform.right * Input.GetAxis("Horizontal"); //Направление движения 
@@ -101,26 +104,26 @@ public class Character : Unit
 
         sprite.flipX = direction.x < 0.0F;
 
-       if(isGrounded) State = CharState.Run;
+        if (isGrounded) State = CharState.Run;
     }
 
     private void Jump()
     {
-        rigidbody.AddForce(transform.up * jumpForce,ForceMode2D.Impulse);
+        rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
 
     private void Shoot()
     {
-        
+
         Vector3 position = transform.position; position.y += 1.0F;
-        Bullet newBullet =  Instantiate(bullet, position, transform.rotation) as Bullet;
+        Bullet newBullet = Instantiate(bullet, position, transform.rotation) as Bullet;
         newBullet.Parent = gameObject;
         newBullet.Direction = newBullet.transform.right * (sprite.flipX ? -1.0F : 1.0F);
     }
 
     private void Bit()
     {
-        Vector3 position = transform.position; position.y += 0.8F;position.x += 0.8F* (sprite.flipX ? -1.0F : 1.0F);
+        Vector3 position = transform.position; position.y += 0.8F; position.x += 0.8F * (sprite.flipX ? -1.0F : 1.0F);
         Bullet1 newBullet1 = Instantiate(bullet1, position, transform.rotation) as Bullet1;
         newBullet1.Parent = gameObject;
         newBullet1.Direction = newBullet1.transform.right * (sprite.flipX ? -1.0F : 1.0F);
@@ -136,7 +139,7 @@ public class Character : Unit
 
     private void CheckGround()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position,0.3F);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3F);
 
         isGrounded = colliders.Length > 1;
 

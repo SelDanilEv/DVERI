@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Heart : MonoBehaviour
+public class nearBullet_add : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collider)
     {
         Character character = collider.GetComponent<Character>();
         if (character)
         {
-            character.Lives += 2;
+            character.nearCount += 4;
             Destroy(gameObject);
         }
     }
