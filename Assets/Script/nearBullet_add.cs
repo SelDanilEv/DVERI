@@ -9,7 +9,9 @@ public class nearBullet_add : MonoBehaviour
         Character character = collider.GetComponent<Character>();
         if (character)
         {
-            character.nearCount += 4;
+
+            character.nearCount += 5;
+
             Destroy(gameObject);
         }
     }
